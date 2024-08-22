@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import GeographicalDistribution from './components/GeographicalDistribution';
+import CustomerLifetimeValue from './components/CustomerLifetimeValue';
+import NewCustomersPerMonth from './components/NewCustomersPerMonth';
+import RepeatCustomers from './components/RepeatCustomers';
+import SalesGrowth from './components/SalesGrowth';
+import TotalSalesDaily from './components/TotalSalesDaily';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Shopify Analytics Dashboard</h1>
+      <GeographicalDistribution />
+      <CustomerLifetimeValue />
+      <NewCustomersPerMonth />
+      <RepeatCustomers />
+      <SalesGrowth />
+      <TotalSalesDaily />
     </div>
   );
 }
