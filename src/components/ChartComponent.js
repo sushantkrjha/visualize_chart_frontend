@@ -24,15 +24,21 @@ const ChartComponent = ({ url, chartType = 'line', labels, datasets }) => {
   useEffect(() => {
     const loadData = async () => {
       const data = await fetchData(url)
-
-      console.log(data);
       
-
+      
       if (data && Array.isArray(data.data)) {
-        const fetchedLabels = labels || data.data.map(item => item.city);
+        
+        
+        const fetchedLabels = labels || data.data.map(item => {
+          const firstKey = Object.keys(item)[0];
+          return item[firstKey];
+        });
         const fetchedData = datasets || [{
           label: 'Customer Count',
-          data: data.data.map(item => item.customer_count),
+          data: data.data.map(item => {
+            const secondKey = Object.keys(item)[1];
+            return item[secondKey];
+          }),
           borderColor: 'rgba(75,192,192,1)',
           backgroundColor: 'rgba(75,192,192,0.2)',
         }];
@@ -43,7 +49,7 @@ const ChartComponent = ({ url, chartType = 'line', labels, datasets }) => {
         });
       }
     };
-
+    
     loadData();
   }, [url, labels, datasets]);
 
